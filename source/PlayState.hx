@@ -28,6 +28,11 @@ class PlayState extends FlxState
 		button.y = text.y + text.height + 47;
 		add(button);
 
+		var button = new FlxButton(0, 0, "Credits", creditsMode);
+		button.screenCenter();
+		button.y = text.y + text.height + 75;
+		add(button);
+
 		bgColor = 0;
 
 		super.create();
@@ -58,6 +63,11 @@ class PlayState extends FlxState
 	private function roomThird():Void
 	{
 		FlxG.switchState(new ThirdRoom());
+	}
+
+	private function creditsMode():Void
+	{
+		FlxG.switchState(new CreditsState());
 	}
 }
 
@@ -147,18 +157,23 @@ class FirstRoom extends FlxState
 {
 	override public function create()
 	{
-		var sprite = new FlxSprite();
-		sprite.loadGraphic("assets/images/test.png");
-		sprite.screenCenter();
-		add(sprite);
-
 		var text = new FlxText();
-		text.text = "";
+		text.text = "You seem to be very...strange";
 		text.size = 16;
 		text.screenCenter();
 		add(text);
 
+		var button = new FlxButton(0, 0, "Okay.", okButton);
+		button.screenCenter();
+		button.y = text.y + text.height + 16;
+		add(button);
+
 		super.create();
+	}
+
+	private function okButton():Void
+	{
+		FlxG.switchState(new PlayState());
 	}
 }
 
@@ -167,12 +182,22 @@ class SecondRoom extends FlxState
 	override public function create()
 	{
 		var text = new FlxText();
-		text.text = "Currently Experimental!";
+		text.text = "Not very...special";
 		text.size = 16;
 		text.screenCenter();
 		add(text);
 
+		var button = new FlxButton(0, 0, "Okay.", okButton);
+		button.screenCenter();
+		button.y = text.y + text.height + 16;
+		add(button);
+
 		super.create();
+	}
+
+	private function okButton():Void
+	{
+		FlxG.switchState(new PlayState());
 	}
 }
 
@@ -181,11 +206,53 @@ class ThirdRoom extends FlxState
 	override public function create()
 	{
 		var text = new FlxText();
-		text.text = "Currently Experimental!";
+		text.text = "im sending pipe bombs to your house rn";
 		text.size = 16;
 		text.screenCenter();
 		add(text);
 
+		var button = new FlxButton(0, 0, "Okay.", okButton);
+		button.screenCenter();
+		button.y = text.y + text.height + 16;
+		add(button);
+
 		super.create();
+	}
+
+	private function okButton():Void
+	{
+		FlxG.switchState(new PlayState());
+	}
+}
+
+class CreditsState extends FlxState
+{
+	override public function create()
+	{
+		var text = new FlxText();
+		text.text = "MyFnf";
+		text.size = 32;
+		text.screenCenter();
+		add(text);
+
+		var sprite = new FlxSprite();
+		sprite.loadGraphic("assets/images/myfnf.png");
+		sprite.screenCenter();
+		sprite.y = sprite.y + text.height + 10;
+		add(sprite);
+
+		var button = new FlxButton(0, 0, "<-- Back", switchState);
+		button.screenCenter();
+		button.y = text.y + text.height + 75;
+		add(button);
+
+		bgColor = 0;
+
+		super.create();
+	}
+
+	private function switchState():Void
+	{
+		FlxG.switchState(new PlayState());
 	}
 }

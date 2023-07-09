@@ -16,11 +16,11 @@ class ApplicationMain
 	#if !macro
 	public static function main()
 	{
-		lime.system.System.__registerEntryPoint("FrezyFriday", create);
+		lime.system.System.__registerEntryPoint("FREZY", create);
 
 		#if (js && html5)
 		#if (munit || utest)
-		lime.system.System.embed("FrezyFriday", null, 640, 480);
+		lime.system.System.embed("FREZY", null, 640, 480);
 		#end
 		#else
 		create(null);
@@ -35,10 +35,10 @@ class ApplicationMain
 		ManifestResources.init(config);
 		#end
 
-		app.meta["build"] = "4";
+		app.meta["build"] = "2";
 		app.meta["company"] = "MyFnf";
-		app.meta["file"] = "FrezyFriday";
-		app.meta["name"] = "FREZY FRIDAY' ";
+		app.meta["file"] = "FREZY";
+		app.meta["name"] = "Frezy Friday' ";
 		app.meta["packageName"] = "com.example.myapp";
 		app.meta["version"] = "1.0.0";
 
@@ -60,7 +60,7 @@ class ApplicationMain
 			minimized: false,
 			parameters: {},
 			resizable: true,
-			title: "FREZY FRIDAY' ",
+			title: "Frezy Friday' ",
 			width: 640,
 			x: null,
 			y: null,
