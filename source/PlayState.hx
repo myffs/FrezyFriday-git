@@ -102,7 +102,7 @@ class GameState extends FlxState
 	override public function create()
 	{
 		var text = new FlxText();
-		text.text = "Start with a level:";
+		text.text = "select a room:";
 		text.size = 16;
 		text.screenCenter();
 		add(text);
@@ -206,7 +206,7 @@ class ThirdRoom extends FlxState
 	override public function create()
 	{
 		var text = new FlxText();
-		text.text = "im sending pipe bombs to your house rn";
+		text.text = "but you are...interesting...";
 		text.size = 16;
 		text.screenCenter();
 		add(text);
