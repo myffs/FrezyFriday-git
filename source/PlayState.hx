@@ -173,7 +173,7 @@ class FirstRoom extends FlxState
 
 	private function okButton():Void
 	{
-		FlxG.switchState(new PlayState());
+		FlxG.switchState(new GameState());
 	}
 }
 
@@ -197,7 +197,7 @@ class SecondRoom extends FlxState
 
 	private function okButton():Void
 	{
-		FlxG.switchState(new PlayState());
+		FlxG.switchState(new GameState());
 	}
 }
 
@@ -221,7 +221,7 @@ class ThirdRoom extends FlxState
 
 	private function okButton():Void
 	{
-		FlxG.switchState(new PlayState());
+		FlxG.switchState(new GameState());
 	}
 }
 

@@ -20,7 +20,7 @@ class ApplicationMain
 
 		#if (js && html5)
 		#if (munit || utest)
-		lime.system.System.embed("FREZY", null, 640, 480);
+		lime.system.System.embed("FREZY", null, 640, 880);
 		#end
 		#else
 		create(null);
@@ -35,12 +35,12 @@ class ApplicationMain
 		ManifestResources.init(config);
 		#end
 
-		app.meta["build"] = "5";
+		app.meta["build"] = "6";
 		app.meta["company"] = "MyFnf";
 		app.meta["file"] = "FREZY";
-		app.meta["name"] = "Frezy Friday' ";
+		app.meta["name"] = "Frezy Friday'";
 		app.meta["packageName"] = "com.example.myapp";
-		app.meta["version"] = "1.0.0";
+		app.meta["version"] = "1.6h";
 
 		
 
@@ -52,15 +52,15 @@ class ApplicationMain
 			borderless: false,
 			// display: 0,
 			element: null,
-			frameRate: 63,
+			frameRate: 64,
 			#if !web fullscreen: false, #end
-			height: 480,
+			height: 880,
 			hidden: #if munit true #else false #end,
 			maximized: false,
 			minimized: false,
 			parameters: {},
 			resizable: true,
-			title: "Frezy Friday' ",
+			title: "Frezy Friday'",
 			width: 640,
 			x: null,
 			y: null,
@@ -103,7 +103,7 @@ class ApplicationMain
 		
 		#elseif !air
 		app.window.context.attributes.background = 0;
-		app.window.frameRate = 63;
+		app.window.frameRate = 64;
 		#end
 
 		var preloader = getPreloader();
