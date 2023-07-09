@@ -35,7 +35,7 @@ class ApplicationMain
 		ManifestResources.init(config);
 		#end
 
-		app.meta["build"] = "3";
+		app.meta["build"] = "5";
 		app.meta["company"] = "MyFnf";
 		app.meta["file"] = "FREZY";
 		app.meta["name"] = "Frezy Friday' ";
@@ -54,14 +54,14 @@ class ApplicationMain
 			element: null,
 			frameRate: 63,
 			#if !web fullscreen: false, #end
-			height: 800,
+			height: 480,
 			hidden: #if munit true #else false #end,
 			maximized: false,
 			minimized: false,
 			parameters: {},
 			resizable: true,
 			title: "Frezy Friday' ",
-			width: 800,
+			width: 640,
 			x: null,
 			y: null,
 		};
