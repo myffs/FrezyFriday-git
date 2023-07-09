@@ -54,14 +54,14 @@ class ApplicationMain
 			element: null,
 			frameRate: 63,
 			#if !web fullscreen: false, #end
-			height: 480,
+			height: 800,
 			hidden: #if munit true #else false #end,
 			maximized: false,
 			minimized: false,
 			parameters: {},
 			resizable: true,
 			title: "Frezy Friday' ",
-			width: 640,
+			width: 800,
 			x: null,
 			y: null,
 		};
