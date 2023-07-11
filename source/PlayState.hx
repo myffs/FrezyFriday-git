@@ -3,10 +3,16 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.FlxSubState;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxDestroyUtil;
+import flixel.util.FlxDestroyUtil;
+import flixel.util.FlxSave;
+import flixel.util.FlxSpriteUtil;
 
 class PlayState extends FlxState
 {
@@ -76,7 +82,7 @@ class OtherState extends FlxState
 	override public function create()
 	{
 		var text = new FlxText();
-		text.text = "funny game i made.";
+		text.text = "short funny game i made.";
 		text.size = 16;
 		text.screenCenter();
 		add(text);
@@ -122,9 +128,14 @@ class GameState extends FlxState
 		button.y = text.y + text.height + 100;
 		add(button);
 
+		var button = new FlxButton(0, 0, "Floor 2 -->", floorSecond);
+		button.screenCenter();
+		button.y = text.y + text.height + 140;
+		add(button);
+
 		var button = new FlxButton(0, 0, "<-- Back", backOption);
 		button.screenCenter();
-		button.y = text.y + text.height + 150;
+		button.y = text.y + text.height + 180;
 		add(button);
 
 		bgColor = 1;
@@ -147,9 +158,56 @@ class GameState extends FlxState
 		FlxG.switchState(new ThirdRoom());
 	}
 
+	private function floorSecond():Void
+	{
+		FlxG.switchState(new SecondFloor());
+	}
+
 	private function backOption():Void
 	{
 		FlxG.switchState(new PlayState());
+	}
+}
+
+class SecondFloor extends FlxState
+{
+	override public function create()
+	{
+		var text = new FlxText();
+		text.text = "2nd floor";
+		text.size = 15;
+		text.height = 50;
+		add(text);
+
+		var text = new FlxText();
+		text.text = "select a room:";
+		text.size = 16;
+		text.screenCenter();
+		add(text);
+
+		var button = new FlxButton(0, 0, "Rewards", menuUnlock);
+		button.screenCenter();
+		button.y = text.y + text.height + 16;
+		add(button);
+
+		var button = new FlxButton(0, 0, "<-- Floor 2", switchBack);
+		button.screenCenter();
+		button.y = text.y + text.height + 50;
+		add(button);
+
+		bgColor = 1;
+
+		super.create();
+	}
+
+	private function menuUnlock():Void
+	{
+		openSubState(new RewardsMenu());
+	}
+
+	private function switchBack():Void
+	{
+		FlxG.switchState(new GameState());
 	}
 }
 
@@ -254,5 +312,61 @@ class CreditsState extends FlxState
 	private function switchState():Void
 	{
 		FlxG.switchState(new PlayState());
+	}
+}
+
+/*class MessageBox extends FlxState
+	{
+	override public function create()
+	{
+		var linearSprite:FlxSprite = new FlxSprite("assets/sprite.png");
+		linearSprite.x = linearSprite.y = 50;
+		add(linearSprite);
+
+		bgColor = 0;
+
+		super.create();
+
+		FlxTween.linearMotion(linearSprite, 50, 50, FlxG.width - linearSprite.width - 50, FlxG.height - linearSprite.height - 50, 50, true, {
+			type: FlxTweenType.PINGPONG,
+			ease: FlxEase.elasticInOut
+		});
+	}
+}*/
+class RewardsMenu extends FlxSubState
+{
+	public function new()
+	{
+		super(0xFF0000);
+	}
+
+	override public function create()
+	{
+		var text = new FlxText();
+		text.text = "None yet.";
+		text.size = 16;
+		text.screenCenter();
+
+		var button = new FlxButton(0, 0, "Exit", closeSub);
+		button.screenCenter();
+		button.y = text.y + text.height + 16;
+
+		var bg:FlxSprite = new FlxSprite();
+		bg.makeGraphic(Std.int(text.width + 64), Std.int(text.height + button.height + 36), FlxColor.WHITE);
+		FlxSpriteUtil.drawRect(bg, 1, 1, bg.width - 2, bg.height - 2, FlxColor.BLACK);
+		bg.screenCenter();
+
+		add(bg);
+		add(text);
+		add(button);
+
+		bgColor = 0;
+
+		super.create();
+	}
+
+	private function closeSub():Void
+	{
+		close();
 	}
 }
